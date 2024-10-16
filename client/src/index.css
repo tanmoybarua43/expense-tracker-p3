@@ -1,0 +1,168 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+h1, h2 {
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Navbar */
+nav {
+  background-color: #333;
+  padding: 10px;
+}
+
+nav a {
+  color: white;
+  margin-right: 15px;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #f4f6f9;
+}
+
+/* Forms */
+form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="number"],
+form input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #555;
+}
+
+/* Main Layout */
+.container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Dashboard */
+.dashboard {
+  display: grid;
+  gap: 20px;
+}
+
+.dashboard h1 {
+  margin-bottom: 20px;
+}
+
+.dashboard-section {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Expense List */
+.expense-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.expense-list li {
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  background-color: #f9f9f9;
+}
+
+.expense-list li:nth-child(even) {
+  background-color: #f1f1f1;
+}
+
+/* Reports */
+.chart-container {
+  width: 100%;
+  height: 400px;
+}
+
+/* Buttons */
+.button {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+.navbar .dropdown-toggle {
+  cursor: pointer;
+  color: #333;
+}
+
+.navbar .dropdown-toggle:hover {
+  color: #555;
+}
+
+.dropdown-menu {
+  right: 0;
+  left: auto;
+}
+
+.table {
+  margin-top: 20px;
+  font-size: 1rem;
+}
+
+.table th {
+  background-color: #343a40;
+  color: white;
+  text-align: center;
+}
+
+.table td {
+  text-align: center;
+}
+
+.table tbody tr:hover {
+  background-color: #f5f5f5;
+}

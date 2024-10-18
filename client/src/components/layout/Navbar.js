@@ -6,7 +6,7 @@ import { Dropdown } from 'react-bootstrap';
 
 const Navbar = () => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  const user = localStorage.getItem('userEmail');
+  const user = useSelector((state) => state.auth.user);
   console.log(user)
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ const Navbar = () => {
                 <li className="nav-item dropdown">
                   <Dropdown>
                     <Dropdown.Toggle variant="light" id="dropdown-basic" className="nav-link">
-                      {user ? user : 'Undefined'}
+                      {user ? user.username : 'Undefined'}
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
                       <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>

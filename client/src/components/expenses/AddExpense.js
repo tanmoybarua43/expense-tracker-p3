@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addExpense } from '../../redux/slices/expenseSlice';
 import { Alert } from 'react-bootstrap';
 
@@ -11,7 +11,7 @@ const AddExpense = () => {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
   const dispatch = useDispatch();
-  const expenseStatus = useSelector((state) => state.expenses.status);
+  // const expenseStatus = useSelector((state) => state.expenses.status);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -41,7 +41,7 @@ const AddExpense = () => {
         <input type="text" value={category} onChange={(e) => setCategory(e.target.value)} className="form-control mb-3" placeholder="Category" required />
         <input type="date" value={date} onChange={(e) => setDate(e.target.value)} className="form-control mb-3" required />
         <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} className="form-control mb-3" placeholder="Description" />
-        <button type="submit" className="btn btn-success w-100">Add Expense</button>
+        <button type="submit" className="btn btn-success w-100">Add Expense</button>  
       </form>
     </div>
   );

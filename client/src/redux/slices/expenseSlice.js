@@ -17,6 +17,16 @@ export const fetchExpenses = createAsyncThunk('expenses/fetch', async () => {
   return response;
 });
 
+// Thunk for updating an expense
+export const updateExpense = createAsyncThunk('expenses/update', async ({ id, updatedData }, { rejectWithValue }) => {
+  try {
+    const response = await expenseService.updateExpense(id, updatedData);
+    return response;
+  } catch (error) {
+    return rejectWithValue(error.response.data);
+  }
+});
+
 // Thunk to handle deleting an expense
 export const deleteExpense = createAsyncThunk('expenses/delete', async (expenseId, { rejectWithValue }) => {
   try {
@@ -44,6 +54,12 @@ const expenseSlice = createSlice({
       })
       .addCase(addExpense.rejected, (state, action) => {
         state.error = action.payload || 'Failed to add expense';
+      })
+      .addCase(updateExpense.fulfilled, (state, action) => {
+        const index = state.items.findIndex(expense => expense._id === action.payload._id);
+        if (index !== -1) {
+          state.items[index] = action.payload; // Update the expense in the state
+        }
       })
       .addCase(deleteExpense.fulfilled, (state, action) => {
         state.items = state.items.filter(expense => expense._id !== action.payload); // Remove the deleted expense

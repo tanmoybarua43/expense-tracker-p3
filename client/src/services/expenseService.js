@@ -10,6 +10,15 @@ const addExpense = async (expenseData) => {
   return response.data;
 };
 
+// Function to update an expense
+const updateExpense = async (id, updatedData) => {
+  const token = localStorage.getItem('token');
+  const response = await axios.put(`${API_URL}${id}`, updatedData, {
+    headers: { Authorization: `Bearer ${token}` }, // Ensure you're passing the token if using auth
+  });
+  return response.data;
+};
+
 const getAllExpenses = async () => {
   const token = localStorage.getItem('token');
   const response = await axios.get(API_URL, {
@@ -18,4 +27,10 @@ const getAllExpenses = async () => {
   return response.data;
 };
 
-export default { addExpense, getAllExpenses };
+const expenseService = {
+  addExpense,
+  getAllExpenses,
+  updateExpense,
+};
+
+export default expenseService;

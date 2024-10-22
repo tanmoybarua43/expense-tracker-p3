@@ -26,6 +26,28 @@ exports.addExpense = async (req, res) => {
   }
 };
 
+// Controller to handle updating an expense
+
+exports.updateExpense = async (req, res) => {
+  try {
+    const { id } = req.params;  // Get expense ID from the URL
+    const updatedData = req.body;  // Get the updated data from the request body
+
+    // Find the expense by ID and update it with the new data
+    const updatedExpense = await Expense.findByIdAndUpdate(id, updatedData, { new: true });
+
+    if (!updatedExpense) {
+      return res.status(404).json({ message: 'Expense not found' });
+    }
+
+    // Return the updated expense
+    res.json(updatedExpense);
+  } catch (error) {
+    console.error('Error updating expense:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
 exports.deleteExpense = async (req, res) => {
   try {
     const expense = await Expense.findByIdAndDelete(req.params.id);

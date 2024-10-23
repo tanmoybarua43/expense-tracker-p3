@@ -19,6 +19,16 @@ const updateExpense = async (id, updatedData) => {
   return response.data;
 };
 
+
+
+const deleteExpense = async (id) => {
+  const token = localStorage.getItem('token');
+  const response = await axios.delete(`${API_URL}${id}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  return response.data;
+};
+
 const getAllExpenses = async () => {
   const token = localStorage.getItem('token');
   const response = await axios.get(API_URL, {
@@ -31,6 +41,7 @@ const expenseService = {
   addExpense,
   getAllExpenses,
   updateExpense,
+  deleteExpense
 };
 
 export default expenseService;

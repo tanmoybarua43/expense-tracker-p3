@@ -28,14 +28,25 @@ export const updateExpense = createAsyncThunk('expenses/update', async ({ id, up
 });
 
 // Thunk to handle deleting an expense
-export const deleteExpense = createAsyncThunk('expenses/delete', async (expenseId, { rejectWithValue }) => {
+// export const deleteExpense = createAsyncThunk('expenses/delete', async (expenseId, { rejectWithValue }) => {
+//   try {
+//     await expenseService.deleteExpense(expenseId);
+//     return expenseId; // Return the ID of the deleted expense
+//   } catch (error) {
+//     return rejectWithValue(error.response.data);
+//   }
+// });
+
+export const deleteExpense = createAsyncThunk('expenses/delete', async (id, { rejectWithValue }) => {
   try {
-    await expenseService.deleteExpense(expenseId);
-    return expenseId; // Return the ID of the deleted expense
+    await expenseService.deleteExpense(id);
+    return id;
   } catch (error) {
     return rejectWithValue(error.response.data);
   }
 });
+
+
 
 const expenseSlice = createSlice({
   name: 'expenses',
@@ -44,6 +55,7 @@ const expenseSlice = createSlice({
     status: 'idle',
     error: null,
   },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchExpenses.fulfilled, (state, action) => {
@@ -61,8 +73,15 @@ const expenseSlice = createSlice({
           state.items[index] = action.payload; // Update the expense in the state
         }
       })
+      // .addCase(deleteExpense.fulfilled, (state, action) => {
+      //   state.items = state.items.filter(expense => expense._id !== action.payload); // Remove the deleted expense
+      // });
       .addCase(deleteExpense.fulfilled, (state, action) => {
-        state.items = state.items.filter(expense => expense._id !== action.payload); // Remove the deleted expense
+        // Remove the deleted expense from the state immediately
+        state.items = state.items.filter(expense => expense._id !== action.payload);
+      })
+      .addCase(deleteExpense.rejected, (state, action) => {
+        state.error = action.payload || 'Failed to delete expense';
       });
   },
 });

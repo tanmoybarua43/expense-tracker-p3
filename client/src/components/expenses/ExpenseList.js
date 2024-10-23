@@ -59,14 +59,21 @@ const ExpenseList = () => {
     }
   };
 
-  const handleDelete = (expenseId) => {
-    dispatch(deleteExpense(expenseId));
+  // const handleDelete = (expenseId) => {
+  //   dispatch(deleteExpense(expenseId));
+  // };
+  const handleDelete = (id) => {
+    if (window.confirm('Are you sure you want to delete this expense?')) {
+      dispatch(deleteExpense(id))
+    }
   };
+  
+  // <Button variant="danger" onClick={() => handleDelete(expense._id)}>Delete</Button>
+  
 
   return (
     <div className="container mt-4">
       <h2 className="text-center">Expense List</h2>
-      
       {success && <Alert variant="success">Expense updated successfully!</Alert>}
 
       <table className="table table-striped table-bordered table-hover mt-3">

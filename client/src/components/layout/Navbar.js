@@ -7,7 +7,6 @@ import { Dropdown } from 'react-bootstrap';
 const Navbar = () => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const user = useSelector((state) => state.auth.user);
-  console.log(user)
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

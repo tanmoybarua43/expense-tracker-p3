@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchExpenses, updateExpense, deleteExpense } from '../../redux/slices/expenseSlice';
 import { Button, Modal, Form, Alert } from 'react-bootstrap';
 
+const predefinedCategories = ['Food', 'Transport', 'Entertainment', 'Health']; // Predefined categories
+
 const ExpenseList = () => {
   const dispatch = useDispatch();
   const expenses = useSelector((state) => state.expenses.items);
@@ -15,6 +17,7 @@ const ExpenseList = () => {
   // Local state for form fields inside modal
   const [amount, setAmount] = useState('');
   const [category, setCategory] = useState('');
+  const [customCategory, setCustomCategory] = useState(''); // For custom category
   const [date, setDate] = useState('');
   const [description, setDescription] = useState('');
 
@@ -41,7 +44,9 @@ const ExpenseList = () => {
   // Handle updating the expense
   const handleUpdateExpense = () => {
     if (selectedExpense) {
-      const updatedData = { amount, category, date, description };
+      const finalCategory = customCategory ? customCategory : category;
+
+      const updatedData = { amount, category: finalCategory, date, description };
       dispatch(updateExpense({ id: selectedExpense._id, updatedData }))
         .then(() => {
           setShowEditModal(false);
@@ -120,11 +125,33 @@ const ExpenseList = () => {
             <Form.Group controlId="formCategory" className="mt-3">
               <Form.Label>Category</Form.Label>
               <Form.Control
-                type="text"
+                as="select"
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-              />
+              >
+                <option value="">Select Category</option>
+                {predefinedCategories.map((cat, index) => (
+                  <option key={index} value={cat}>
+                    {cat}
+                  </option>
+                ))}
+                <option value="custom">Other (Add Custom Category)</option>
+              </Form.Control>
             </Form.Group>
+
+            {/* Show input for custom category when user selects "Other" */}
+            {category === 'custom' && (
+              <Form.Group controlId="formCustomCategory" className="mt-3">
+                <Form.Label>Custom Category</Form.Label>
+                <Form.Control
+                  type="text"
+                  value={customCategory}
+                  onChange={(e) => setCustomCategory(e.target.value)}
+                  placeholder="Enter custom category"
+                />
+              </Form.Group>
+            )}
+
             <Form.Group controlId="formDate" className="mt-3">
               <Form.Label>Date</Form.Label>
               <Form.Control
@@ -157,3 +184,4 @@ const ExpenseList = () => {
 };
 
 export default ExpenseList;
+

@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 
-const API_URL = 'http://localhost:5050/api/auth/';
+// const API_URL = 'http://localhost:5050/api/auth/';
+const API_URL = 'https://expense-tracker-p3-mnek.vercel.app/api/auth/';
 
 const login = async (userData) => {
   const response = await axios.post(`${API_URL}login`, userData);

@@ -9,7 +9,10 @@ dotenv.config();
 connectDB();
 
 const app = express();
-app.use(cors());
+// app.use(cors());
+app.use(cors({
+    origin: 'https://expense-tracker-p3.vercel.app'  // Your frontend URL
+  }));
 app.use(express.json());
 
 app.use('/api/auth', authRoutes);

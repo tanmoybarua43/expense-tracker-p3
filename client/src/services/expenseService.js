@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5050/api/expenses/';
+const API_URL = 'https://expense-tracker-p3-mnek.vercel.app/api/expenses/';
 
 const addExpense = async (expenseData) => {
   const token = localStorage.getItem('token');

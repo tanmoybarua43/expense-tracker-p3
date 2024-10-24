@@ -20,7 +20,6 @@ exports.addExpense = async (req, res) => {
 exports.getExpenses = async (req, res) => {
   try {
     // Log the user ID to check if it's being passed correctly
-    console.log("User ID:", req.user._id);
 
     const expenses = await Expense.find({ userId: req.user._id }); // Fetch expenses for the logged-in user
     res.status(200).json(expenses);

@@ -7,6 +7,7 @@ const addExpense = async (expenseData) => {
   const response = await axios.post(`${API_URL}add`, expenseData, {
     headers: { Authorization: `Bearer ${token}` },
   });
+  console.log("expenses data", response.data);
   return response.data;
 };
 

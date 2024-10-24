@@ -7,13 +7,14 @@ const predefinedCategories = ['Food', 'Transport', 'Entertainment', 'Health']; /
 
 const ExpenseList = () => {
   const dispatch = useDispatch();
-  const expenses = useSelector((state) => state.expenses.items);
-  
-  // State for modal visibility
+  const expenses = useSelector((state) => state.expenses.items); // Fetching expenses from the state
+  const error = useSelector((state) => state.expenses.error); // Handle potential errors
+
+  // State for modal visibility and handling selected expense
   const [showEditModal, setShowEditModal] = useState(false);
-  const [selectedExpense, setSelectedExpense] = useState(null); // Store the selected expense
+  const [selectedExpense, setSelectedExpense] = useState(null);
   const [success, setSuccess] = useState(false);
-  
+
   // Local state for form fields inside modal
   const [amount, setAmount] = useState('');
   const [category, setCategory] = useState('');
@@ -22,7 +23,15 @@ const ExpenseList = () => {
   const [description, setDescription] = useState('');
 
   useEffect(() => {
-    dispatch(fetchExpenses());
+    const loadExpenses = async () => {
+      try {
+        await dispatch(fetchExpenses()).unwrap(); // Fetch expenses on component load
+      } catch (err) {
+        console.error("Failed to fetch expenses:", err);
+      }
+    };
+
+    loadExpenses();
   }, [dispatch]);
 
   // Handle opening the modal and pre-filling the form with the selected expense's details
@@ -42,39 +51,38 @@ const ExpenseList = () => {
   };
 
   // Handle updating the expense
-  const handleUpdateExpense = () => {
+  const handleUpdateExpense = async () => {
     if (selectedExpense) {
-      const finalCategory = customCategory ? customCategory : category;
+      const finalCategory = customCategory ? customCategory : category; // Use custom category if provided
 
       const updatedData = { amount, category: finalCategory, date, description };
-      dispatch(updateExpense({ id: selectedExpense._id, updatedData }))
-        .then(() => {
-          setShowEditModal(false);
-          setSuccess(true); // Show success message
-          setTimeout(() => setSuccess(false), 3000); // Hide success message after 3 seconds
-        })
-        .catch(() => {
-          // Handle error (optional)
-        });
+      try {
+        await dispatch(updateExpense({ id: selectedExpense._id, updatedData })).unwrap();
+        setShowEditModal(false);
+        setSuccess(true); // Show success message
+        setTimeout(() => setSuccess(false), 3000); // Hide success message after 3 seconds
+      } catch (error) {
+        console.error("Failed to update expense:", error);
+      }
     }
   };
 
-  // const handleDelete = (expenseId) => {
-  //   dispatch(deleteExpense(expenseId));
-  // };
-  const handleDelete = (id) => {
+  // Handle deleting the expense
+  const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this expense?')) {
-      dispatch(deleteExpense(id))
+      try {
+        await dispatch(deleteExpense(id)).unwrap();
+      } catch (error) {
+        console.error("Failed to delete expense:", error);
+      }
     }
   };
-  
-  // <Button variant="danger" onClick={() => handleDelete(expense._id)}>Delete</Button>
-  
 
   return (
     <div className="container mt-4">
       <h2 className="text-center">Expense List</h2>
       {success && <Alert variant="success">Expense updated successfully!</Alert>}
+      {error && <Alert variant="danger">{error}</Alert>} {/* Display error if there's an issue */}
 
       <table className="table table-striped table-bordered table-hover mt-3">
         <thead className="thead-dark">
@@ -167,28 +175,4 @@ const ExpenseList = () => {
                 onChange={(e) => setDate(e.target.value)}
               />
             </Form.Group>
-            <Form.Group controlId="formDescription" className="mt-3">
-              <Form.Label>Description</Form.Label>
-              <Form.Control
-                type="text"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-              />
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseModal}>
-            Cancel
-          </Button>
-          <Button variant="primary" onClick={handleUpdateExpense}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </div>
-  );
-};
-
-export default ExpenseList;
-
+            <Form.Group controlId="formDescription" className="mt-

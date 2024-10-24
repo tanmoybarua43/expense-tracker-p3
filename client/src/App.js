@@ -1,4 +1,4 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'; // Keep the Bootstrap import
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
@@ -6,7 +6,8 @@ import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Dashboard from './pages/Dashboard';
 import PrivateRoute from './components/PrivateRoute';
-import PublicRoute from './components/PublicRoute.js';
+import PublicRoute from './components/PublicRoute.js'; // Keep PublicRoute import
+import Budget from './components/budget/Budget'; // Keep Budget import
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         {/* Private routes (dashboard) wrapped in PrivateRoute */}
         <Route element={<PrivateRoute />}>
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/budget" element={<Budget />} />
         </Route>
       </Routes>
     </Router>

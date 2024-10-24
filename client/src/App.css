@@ -23,3 +23,6 @@ form {
 h1, h2 {
   color: #333;
 }
+.btn-purple{
+  background-color: var(--bs-indigo);
+}

@@ -5,7 +5,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 const PrivateRoute = () => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
-  // Redirect to login if the user is not authenticated
+  // Redirect to login if not authenticated
   return isAuthenticated ? <Outlet /> : <Navigate to="/" />;
 };
 

@@ -10,11 +10,18 @@ dotenv.config();
 connectDB();
 
 const app = express();
-app.use(cors());
+// app.use(cors());
+app.use(cors({
+    origin: 'https://expense-tracker-p3.vercel.app',  
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], 
+    credentials: true  
+}));
+
 app.use(express.json());
 
-app.use("/api/auth", authRoutes);
-app.use("/api/expenses", expenseRoutes);
+app.options('*', cors());
+app.use('/api/auth', authRoutes);
+app.use('/api/expenses', expenseRoutes);
 app.use("/api/budget", budgetRoutes);
 
 const PORT = process.env.PORT || 5000;

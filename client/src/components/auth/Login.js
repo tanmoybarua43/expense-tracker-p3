@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { login } from '../../redux/slices/authSlice';
 import { useNavigate } from 'react-router-dom';
 import { Alert } from 'react-bootstrap';
@@ -14,7 +14,6 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      localStorage.setItem('userEmail', email);
       await dispatch(login({ email, password })).unwrap();
       navigate('/dashboard');
     } catch (err) {

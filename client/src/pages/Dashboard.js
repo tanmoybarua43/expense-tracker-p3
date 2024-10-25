@@ -10,7 +10,7 @@ const Dashboard = () => {
   return (
     <div className="container expense-list mt-5">
       <h1>Dashboard</h1>
-      {user && <h4>Welcome to Expense Tracker App, {user.username}!</h4>} {/* Display the username */}
+      {user && <h4 className='text-center'>Welcome to Expense Tracker App, {user.username}!</h4>} {/* Display the username */}
       <div className="row mt-4">
         <div className="col-md-6 mb-4">
           <AddExpense />

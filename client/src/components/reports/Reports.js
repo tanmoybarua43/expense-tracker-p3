@@ -26,10 +26,7 @@ const Reports = () => {
       {
         label: 'Expenses by Category',
         data: Object.values(categoryTotals),
-        backgroundColor: [
-          'rgba(128, 0, 128, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-        ]
+        backgroundColor: 'rgba(75, 192, 192, 0.6)',
       },
     ],
   };

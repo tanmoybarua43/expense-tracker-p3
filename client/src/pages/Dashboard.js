@@ -8,7 +8,7 @@ const Dashboard = () => {
   const user = useSelector((state) => state.auth.user);
 
   return (
-    <div className="container mt-5">
+    <div className="container expense-list mt-5">
       <h1>Dashboard</h1>
       {user && <h2>Welcome, {user.username}!</h2>} {/* Display the username */}
       <div className="row mt-4">

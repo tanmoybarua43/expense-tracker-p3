@@ -72,7 +72,7 @@ const ExpenseList = () => {
   
 
   return (
-    <div className="container expense-list mt-4">
+    <div className="container mt-4">
       <h2 className="text-center">Expense List</h2>
       {success && <Alert variant="success">Expense updated successfully!</Alert>}
 

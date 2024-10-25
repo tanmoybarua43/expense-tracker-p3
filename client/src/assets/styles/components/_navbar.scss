@@ -1,0 +1,40 @@
+// _navbar.scss
+
+.navbar {
+    background-color: $primary-color;
+    padding: $spacing-unit;
+    box-shadow: $box-shadow;
+  
+    .navbar-brand {
+      color: #fff;
+      font-size: 1.5rem;
+    }
+  
+    .navbar-toggler {
+      color: #fff;
+      border: none;
+    }
+  
+    .navbar-nav {
+      .nav-link {
+        color: #fff;
+        font-size: 1.2rem;
+        padding: $spacing-unit / 2;
+  
+        &:hover {
+          color: lighten($primary-color, 20%);
+        }
+      }
+  
+      .dropdown-toggle {
+        background-color: transparent;
+        border: none;
+        color: #fff;
+  
+        &:hover {
+          color: lighten($primary-color, 20%);
+        }
+      }
+    }
+  }
+  

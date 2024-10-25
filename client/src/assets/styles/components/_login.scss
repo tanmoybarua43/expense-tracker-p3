@@ -1,0 +1,27 @@
+// _login.scss and _register.scss
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: $spacing-unit;
+    background-color: #fff;
+    box-shadow: $box-shadow;
+    border-radius: $border-radius;
+  
+    h2 {
+      text-align: center;
+      margin-bottom: $spacing-unit;
+    }
+  
+    .form-control {
+      margin-bottom: $spacing-unit;
+      padding: $spacing-unit / 2;
+      border-radius: $border-radius;
+      border: 1px solid $border-color;
+    }
+  
+    button {
+      @include button($primary-color, darken($primary-color, 10%));
+    }
+  }
+  

@@ -1,0 +1,35 @@
+// _expenseList.scss
+
+.container {
+    margin-top: $spacing-unit * 2;
+  }
+  
+  .table {
+    border: 1px solid $border-color;
+    th, td {
+      padding: $spacing-unit / 2;
+    }
+  }
+  
+  thead {
+    background-color: $primary-color;
+    color: white;
+  }
+  
+  .modal-header, .modal-footer {
+    background-color: $primary-color;
+    color: white;
+  }
+  
+  button {
+    @include button($secondary-color, darken($secondary-color, 10%));
+  
+    &.btn-danger {
+      @include button(#e74c3c, darken(#e74c3c, 10%));
+    }
+  
+    &.btn-warning {
+      @include button(#f39c12, darken(#f39c12, 10%));
+    }
+  }
+  

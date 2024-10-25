@@ -1,0 +1,11 @@
+// main.scss
+
+@import 'variables';
+@import 'mixins';
+@import 'base/reset';
+@import 'base/typography';
+@import 'components/navbar';
+@import 'components/login';
+@import 'components/register';
+@import 'components/addExpense';
+@import 'components/expenseList';

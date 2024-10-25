@@ -1,14 +1,23 @@
-// _expenseList.scss
-
+// ExpenseList SCSS
 .container {
-    margin-top: $spacing-unit * 2;
+    margin-top: 2rem;
   
-    .table {
+    h2 {
+      text-align: center;
+      color: $heading-color;
+    }
+  
+    table {
+      width: 100%;
+      margin-top: 1.5rem;
       background-color: $card-bg-color;
       border-radius: $border-radius;
       overflow: hidden;
+      box-shadow: $box-shadow;
+  
       th, td {
-        padding: $spacing-unit / 1.5;
+        padding: 1rem;
+        text-align: center;
       }
   
       th {
@@ -20,17 +29,14 @@
         color: $text-color;
         border-bottom: 1px solid $border-color;
       }
-    }
   
-    button {
-      @include button($secondary-color, darken($secondary-color, 10%));
-  
-      &.btn-danger {
-        @include button(#e74c3c, darken(#e74c3c, 10%));
+      .btn-warning {
+        @include button($secondary-color, darken($secondary-color, 10%));
+        margin-right: 0.5rem;
       }
   
-      &.btn-warning {
-        @include button(#f39c12, darken(#f39c12, 10%));
+      .btn-danger {
+        @include button(#e74c3c, darken(#e74c3c, 10%));
       }
     }
   

@@ -1,36 +1,32 @@
-// _addExpense.scss
-
+// AddExpense SCSS
 .container {
-    max-width: 500px;
-    margin: $spacing-unit * 3 auto;
-    padding: $spacing-unit * 2;
-    @include card;
-    
+    max-width: 450px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    background-color: $card-bg-color;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+  
     h2 {
       text-align: center;
-      margin-bottom: $spacing-unit * 2;
+      color: $heading-color;
+      margin-bottom: 1.5rem;
     }
   
     .form-control {
-      margin-bottom: $spacing-unit;
-      padding: $spacing-unit / 1.5;
-      border-radius: $border-radius;
+      margin-bottom: 1rem;
+      padding: 0.75rem;
       border: 1px solid $border-color;
-      
-      &:focus {
-        border-color: $secondary-color;
-        box-shadow: 0 0 6px lighten($secondary-color, 20%);
-      }
-    }
-  
-    select, input[type="date"] {
       border-radius: $border-radius;
-      padding: $spacing-unit / 1.5;
     }
   
     button {
-      @include button($secondary-color, darken($secondary-color, 15%));
+      @include button($primary-color, darken($primary-color, 10%));
       width: 100%;
+      padding: 0.75rem;
+      margin-top: 1rem;
+      font-size: 1rem;
+      border-radius: $border-radius;
     }
   }
   

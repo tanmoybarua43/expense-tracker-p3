@@ -36,7 +36,7 @@ const AddExpense = () => {
   };
 
   return (
-    <div className="container mt-4">
+    <div className="container expense-list mt-4">
       <h2>Add Expense</h2>
       {success && <Alert variant="success">Expense added successfully!</Alert>}
       {error && <Alert variant="danger">{error}</Alert>}

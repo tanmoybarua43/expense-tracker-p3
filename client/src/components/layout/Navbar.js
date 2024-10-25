@@ -23,7 +23,7 @@ const Navbar = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto">
+          <ul className="navbar-nav align-items-end ms-auto">
             {isAuthenticated ? (
               <>
                 <li className="nav-item">

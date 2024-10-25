@@ -1,16 +1,17 @@
+// services/budgetService.js
 import axios from "axios";
 
-const API_URL = "http://localhost:5050/api/expenses/";
+const API_URL = "http://localhost:5050/api/budget/";
 
-const addExpense = async (expenseData) => {
+const setBudget = async (budgetData) => {
   const token = localStorage.getItem("token");
-  const response = await axios.post(`${API_URL}add`, expenseData, {
+  const response = await axios.post(`${API_URL}set`, budgetData, {
     headers: { Authorization: `Bearer ${token}` },
   });
   return response.data;
 };
 
-const getAllExpenses = async () => {
+const fetchBudget = async () => {
   const token = localStorage.getItem("token");
   const response = await axios.get(API_URL, {
     headers: { Authorization: `Bearer ${token}` },
@@ -18,20 +19,19 @@ const getAllExpenses = async () => {
   return response.data;
 };
 
-// Ensure you only have one declaration for updateExpense
-const updateExpense = async (id, expenseData) => {
+const updateBudget = async (budgetData) => {
   const token = localStorage.getItem("token");
-  const response = await axios.put(`${API_URL}${id}`, expenseData, {
+  const response = await axios.put(`${API_URL}update`, budgetData, {
     headers: { Authorization: `Bearer ${token}` },
   });
   return response.data;
 };
 
-const deleteExpense = async (expenseId) => {
+const deleteBudget = async () => {
   const token = localStorage.getItem("token");
-  await axios.delete(`${API_URL}${expenseId}`, {
+  await axios.delete(`${API_URL}delete`, {
     headers: { Authorization: `Bearer ${token}` },
   });
 };
 
-export default { addExpense, getAllExpenses, updateExpense, deleteExpense };
+export default { setBudget, fetchBudget, updateBudget, deleteBudget };

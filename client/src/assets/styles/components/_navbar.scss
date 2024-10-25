@@ -2,37 +2,38 @@
 
 .navbar {
     background-color: $primary-color;
-    padding: $spacing-unit;
-    box-shadow: $box-shadow;
+    padding: $spacing-unit * 1.5;
   
     .navbar-brand {
       color: #fff;
       font-size: 1.5rem;
     }
   
-    .navbar-toggler {
-      color: #fff;
-      border: none;
-    }
-  
     .navbar-nav {
       .nav-link {
         color: #fff;
-        font-size: 1.2rem;
-        padding: $spacing-unit / 2;
+        font-size: 1.1rem;
+        margin-left: $spacing-unit * 1.5;
+        transition: color $transition;
   
         &:hover {
-          color: lighten($primary-color, 20%);
+          color: lighten($primary-color, 10%);
         }
       }
   
-      .dropdown-toggle {
-        background-color: transparent;
-        border: none;
-        color: #fff;
+      .dropdown-menu {
+        background-color: $card-bg-color;
+        box-shadow: $box-shadow;
+        border-radius: $border-radius;
   
-        &:hover {
-          color: lighten($primary-color, 20%);
+        .dropdown-item {
+          color: $text-color;
+          padding: $spacing-unit / 1.5;
+          transition: background-color $transition;
+  
+          &:hover {
+            background-color: lighten($background-color, 10%);
+          }
         }
       }
     }

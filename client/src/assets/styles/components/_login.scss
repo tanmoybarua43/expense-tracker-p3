@@ -2,26 +2,30 @@
 
 .container {
     max-width: 400px;
-    margin: 0 auto;
-    padding: $spacing-unit;
-    background-color: #fff;
-    box-shadow: $box-shadow;
-    border-radius: $border-radius;
-  
+    margin: $spacing-unit * 3 auto;
+    padding: $spacing-unit * 2;
+    @include card;
+    
     h2 {
       text-align: center;
-      margin-bottom: $spacing-unit;
+      margin-bottom: $spacing-unit * 2;
     }
   
     .form-control {
       margin-bottom: $spacing-unit;
-      padding: $spacing-unit / 2;
+      padding: $spacing-unit / 1.5;
       border-radius: $border-radius;
       border: 1px solid $border-color;
+  
+      &:focus {
+        border-color: $primary-color;
+        box-shadow: 0 0 6px lighten($primary-color, 20%);
+      }
     }
   
     button {
-      @include button($primary-color, darken($primary-color, 10%));
+      @include button($primary-color, darken($primary-color, 15%));
+      width: 100%;
     }
   }
   

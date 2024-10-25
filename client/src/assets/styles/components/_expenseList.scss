@@ -2,34 +2,45 @@
 
 .container {
     margin-top: $spacing-unit * 2;
-  }
   
-  .table {
-    border: 1px solid $border-color;
-    th, td {
-      padding: $spacing-unit / 2;
-    }
-  }
+    .table {
+      background-color: $card-bg-color;
+      border-radius: $border-radius;
+      overflow: hidden;
+      th, td {
+        padding: $spacing-unit / 1.5;
+      }
   
-  thead {
-    background-color: $primary-color;
-    color: white;
-  }
+      th {
+        background-color: $primary-color;
+        color: #fff;
+      }
   
-  .modal-header, .modal-footer {
-    background-color: $primary-color;
-    color: white;
-  }
-  
-  button {
-    @include button($secondary-color, darken($secondary-color, 10%));
-  
-    &.btn-danger {
-      @include button(#e74c3c, darken(#e74c3c, 10%));
+      td {
+        color: $text-color;
+        border-bottom: 1px solid $border-color;
+      }
     }
   
-    &.btn-warning {
-      @include button(#f39c12, darken(#f39c12, 10%));
+    button {
+      @include button($secondary-color, darken($secondary-color, 10%));
+  
+      &.btn-danger {
+        @include button(#e74c3c, darken(#e74c3c, 10%));
+      }
+  
+      &.btn-warning {
+        @include button(#f39c12, darken(#f39c12, 10%));
+      }
+    }
+  
+    .modal-content {
+      @include card;
+    }
+  
+    .modal-footer {
+      display: flex;
+      justify-content: space-between;
     }
   }
   

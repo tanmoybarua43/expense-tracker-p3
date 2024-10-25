@@ -2,33 +2,35 @@
 
 .container {
     max-width: 500px;
-    margin: 0 auto;
-    background-color: #fff;
-    box-shadow: $box-shadow;
-    border-radius: $border-radius;
-    padding: $spacing-unit;
-  
+    margin: $spacing-unit * 3 auto;
+    padding: $spacing-unit * 2;
+    @include card;
+    
     h2 {
       text-align: center;
-      margin-bottom: $spacing-unit;
+      margin-bottom: $spacing-unit * 2;
     }
   
     .form-control {
       margin-bottom: $spacing-unit;
+      padding: $spacing-unit / 1.5;
       border-radius: $border-radius;
       border: 1px solid $border-color;
-      padding: $spacing-unit / 2;
+      
+      &:focus {
+        border-color: $secondary-color;
+        box-shadow: 0 0 6px lighten($secondary-color, 20%);
+      }
+    }
+  
+    select, input[type="date"] {
+      border-radius: $border-radius;
+      padding: $spacing-unit / 1.5;
     }
   
     button {
-      @include button($secondary-color, darken($secondary-color, 10%));
-    }
-  
-    select {
-      margin-bottom: $spacing-unit;
-      padding: $spacing-unit / 2;
-      border-radius: $border-radius;
-      border: 1px solid $border-color;
+      @include button($secondary-color, darken($secondary-color, 15%));
+      width: 100%;
     }
   }
   

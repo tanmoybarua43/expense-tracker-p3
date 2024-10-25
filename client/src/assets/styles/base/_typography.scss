@@ -1,22 +1,30 @@
 // _typography.scss
 
-h1, h2, h3, h4, h5, h6 {
-    font-weight: bold;
+body {
+    font-family: $font-family;
     color: $text-color;
+    background-color: $background-color;
+  }
+  
+  h1, h2, h3 {
+    font-family: 'Roboto', sans-serif;
+    color: $heading-color;
+    margin-bottom: $spacing-unit * 1.5;
   }
   
   p {
-    line-height: 1.6;
+    font-size: 1rem;
     margin-bottom: $spacing-unit;
+    line-height: 1.6;
   }
   
   a {
     color: $primary-color;
     text-decoration: none;
-    transition: $transition;
+    transition: color $transition;
   
     &:hover {
-      color: darken($primary-color, 15%);
+      color: darken($primary-color, 10%);
     }
   }
   

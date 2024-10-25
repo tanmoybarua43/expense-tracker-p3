@@ -76,6 +76,7 @@ const ExpenseList = () => {
       <h2 className="text-center">Expense List</h2>
       {success && <Alert variant="success">Expense updated successfully!</Alert>}
 
+      <div className='table-responsive'>
       <table className="table table-striped table-bordered table-hover mt-3">
         <thead className="thead-dark">
           <tr>
@@ -113,7 +114,7 @@ const ExpenseList = () => {
           )}
         </tbody>
       </table>
-
+      </div>
       {/* Edit Expense Modal */}
       <Modal show={showEditModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
